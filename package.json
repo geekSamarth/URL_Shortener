@@ -1,0 +1,21 @@
+{
+  "name": "URL_Shortener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "4.x",
+    "@types/node": "^24.7.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "4.x"
+  }
+}
