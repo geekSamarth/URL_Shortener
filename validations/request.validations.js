@@ -6,3 +6,8 @@ export const signupostRequestBodySchema = z.object({
   email: z.email(),
   password: z.string().min(8),
 });
+
+export const loginpostRequestBodySchema = z.object({
+  email: z.email(),
+  password: z.string().min(8),
+});
