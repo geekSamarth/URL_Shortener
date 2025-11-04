@@ -1,9 +1,11 @@
 import express from "express";
 import userRouter from "./routes/user.routes.js";
+import { authenticationMiddleware } from "./middlewares/auth.middlewares.js";
 const app = express();
 const PORT = 8000;
 
 app.use(express.json());
+app.use(authenticationMiddleware);
 
 app.get("/", (req, res) => {
   return res.json({ status: "Server is up and running ..." });
