@@ -4,12 +4,6 @@ import { db } from "../db/index.js";
 import { urlsTable } from "../models/url.models.js";
 
 export const shortenUrl = async (req, res) => {
-  const userId = req.user?.id;
-  if (!userId) {
-    return res
-      .status(401)
-      .json({ error: "You must be loggedIn to access this resource!" });
-  }
   const validationResult = await shortenPostRequestBodySchema.safeParseAsync(
     req.body
   );
