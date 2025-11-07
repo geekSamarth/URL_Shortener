@@ -42,6 +42,7 @@ npm install express drizzle-orm pg jsonwebtoken bcrypt dotenv
 | ------ | --------- | ----------------------- | ------------- |
 | POST   | `/signup` | Register a new user     | ❌            |
 | POST   | `/login`  | Login and receive token | ❌            |
+| POST   | `/logout`  | Logout the user        | ✅          |
 
 ## URL Routes
 
