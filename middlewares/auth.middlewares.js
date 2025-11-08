@@ -1,7 +1,7 @@
 import { validateUserToken } from "../utils/token.js";
 
 export function authenticationMiddleware(req, res, next) {
-  const authHeader = req.headers("authorization");
+  const authHeader = req.headers["authorization"];
   if (!authHeader) {
     return next();
   }
