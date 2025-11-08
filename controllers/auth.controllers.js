@@ -7,6 +7,7 @@ import {
 import { hashedPasswordWithSalt } from "../utils/hashing.js";
 import { getUserByEmail } from "../services/user.services.js";
 import { createUserToken } from "../utils/token.js";
+import { eq } from "drizzle-orm";
 
 export const signup = async (req, res) => {
   const validationResult = await signupostRequestBodySchema.safeParseAsync(
@@ -66,4 +67,23 @@ export const login = async (req, res) => {
   }
   const token = await createUserToken({ id: user.id });
   return res.json({ token });
+};
+
+export const getUserDetails = async (req, res) => {
+  const id = req.user.id;
+  const user = await db
+    .select({
+      id: usersTable.id,
+      firstname: usersTable.firstname,
+      lastname: usersTable.lastname,
+      email: usersTable.email,
+    })
+    .from(usersTable)
+    .where(eq(usersTable.id, id));
+  if (!user) {
+    res.status(401).json({ error: `Error while logging out the user!` });
+  }
+  return res
+    .status(200)
+    .json({ message: "User details fetched successfully!", data: user });
 };
