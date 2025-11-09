@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.routes.js";
 import urlRouter from "./routes/url.routes.js";
 import { authenticationMiddleware } from "./middlewares/auth.middlewares.js";
@@ -15,10 +16,13 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(cookieParser());
 app.use(authenticationMiddleware);
 
 app.get("/", (req, res) => {
-  return res.json({ status: "Server is up and running ..." });
+  return res.json({
+    status: "Server is up and running ...",
+  });
 });
 app.use("/user", userRouter);
 app.use(urlRouter);

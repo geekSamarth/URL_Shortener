@@ -34,7 +34,7 @@ export const shortenUrl = async (req, res) => {
 
 export const redirectOriginalURL = async (req, res) => {
   const shortCode = req.params.shortcode;
-  console.log("shortcode", shortCode);
+  // console.log("shortcode", shortCode);
 
   const [result] = await db
     .select()

@@ -66,7 +66,14 @@ export const login = async (req, res) => {
     return res.status(400).json({ error: `Invalid Password ` });
   }
   const token = await createUserToken({ id: user.id });
-  return res.json({ token });
+  return res
+    .status(200)
+    .cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
+    })
+    .json({ message: "User loggedIn successfully!", success: true });
 };
 
 export const getUserDetails = async (req, res) => {
@@ -86,4 +93,12 @@ export const getUserDetails = async (req, res) => {
   return res
     .status(200)
     .json({ message: "User details fetched successfully!", data: user });
+};
+
+export const logout = async (req, res) => {
+  res.cookie("token", "", { expiresIn: new Date(0) });
+  res.status(200).json({
+    success: true,
+    message: "User logged out successfully!",
+  });
 };
