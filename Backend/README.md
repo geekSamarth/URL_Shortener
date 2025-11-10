@@ -38,11 +38,12 @@ npm install express drizzle-orm pg jsonwebtoken bcrypt dotenv
 
 ## Auth Routes
 
-| Method | Endpoint  | Description             | Auth Required |
-| ------ | --------- | ----------------------- | ------------- |
-| POST   | `/signup` | Register a new user     | ❌            |
-| POST   | `/login`  | Login and receive token | ❌            |
-| POST   | `/logout`  | Logout the user        | ✅          |
+| Method | Endpoint          | Description              | Auth Required |
+| ------ | ----------------- | ------------------------ | ------------- |
+| POST   | `/signup`         | Register a new user      | ❌            |
+| POST   | `/login`          | Login and receive token  | ❌            |
+| POST   | `/logout`         | Logout the user          | ✅            |
+| GET    | `/getuserprofile` | Get the user information | ✅            |
 
 ## URL Routes
 
